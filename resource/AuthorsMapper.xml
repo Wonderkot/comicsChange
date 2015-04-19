@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ru.wonderkot.comicsChange.data.AuthorDao">
+	<resultMap type="Authors" id="AuthorsResult">
+		<id property="id" column="ID" />
+		<result property="name" column="NAME" />
+		<result property="surname" column="SURNAME" />
+		<result property="patronymic" column="PATRONYMIC" />
+	</resultMap>
+
+
+	<insert id="addNewAuthor" parameterType="map" useGeneratedKeys="true"
+		keyProperty="author.id" keyColumn="ID">
+		insert into comicschange.authors
+		(NAME,
+		SURNAME,
+		PATRONYMIC) values
+		(#{author.name},#{author.surname},#{author.patronymic})
+	</insert>
+
+	<select id="getAllAuthors" resultMap="AuthorsResult">
+		select * from
+		comicschange.authors
+	</select>
+</mapper>
