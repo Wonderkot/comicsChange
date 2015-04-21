@@ -22,4 +22,26 @@
 		select * from
 		comicschange.authors
 	</select>
+
+	<delete id="deleteAuthor">
+		delete from comicschange.authors where id =
+		#{author.id}
+	</delete>
+
+	<select id="findAuthor" resultMap="AuthorsResult">
+		select * from
+		comicschange.authors
+		where name = #{author.name} and surname =
+		#{author.surname} and patronymic = #{author.patronymic}
+	</select>
+
+	<update id="updateAuthor">
+		UPDATE comicschange.authors SET
+		NAME = #{author.name},
+		SURNAME =
+		#{author.surname},
+		PATRONYMIC = #{author.patronymic}
+		WHERE ID =
+		#{author.id};
+	</update>
 </mapper>

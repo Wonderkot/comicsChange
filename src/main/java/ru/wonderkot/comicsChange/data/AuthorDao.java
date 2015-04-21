@@ -17,6 +17,7 @@ import ru.wonderkot.comicsChange.model.Author;
 public interface AuthorDao {
 	public void addNewAuthor(@Param("author") Author author);
 	public void deleteAuthor(Author author);
+	public void updateAuthor(Author author);
 	public ArrayList<Author> findAuthor(Author author);
 	public ArrayList<Author> getAllAuthors();
 }

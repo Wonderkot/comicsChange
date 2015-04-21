@@ -28,8 +28,8 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Override
 	public void addNewAuthor(Author author) {
 		System.out.println(author.getName());
-		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory()
-				.openSession(true);
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession(
+				true);
 		try {
 			AuthorDao authorDao = sqlSession.getMapper(AuthorDao.class);
 			authorDao.addNewAuthor(author);
@@ -37,7 +37,6 @@ public class AuthorDaoImpl implements AuthorDao {
 		} finally {
 			sqlSession.close();
 		}
-		
 
 	}
 
@@ -49,7 +48,15 @@ public class AuthorDaoImpl implements AuthorDao {
 	 */
 	@Override
 	public void deleteAuthor(Author author) {
-		// TODO Auto-generated method stub
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession(
+				true);
+		try {
+			AuthorDao authorDao = sqlSession.getMapper(AuthorDao.class);
+			authorDao.deleteAuthor(author);
+			sqlSession.commit();
+		} finally {
+			sqlSession.close();
+		}
 
 	}
 
@@ -83,6 +90,24 @@ public class AuthorDaoImpl implements AuthorDao {
 			sqlSession.close();
 		}
 		return authors;
+	}
+
+	@Override
+	public void updateAuthor(Author author) {
+		if (author == null) {
+			return;
+		}
+
+		SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession(
+				true);
+		try {
+			AuthorDao authorDao = sqlSession.getMapper(AuthorDao.class);
+			authorDao.updateAuthor(author);
+			sqlSession.commit();
+		} finally {
+			sqlSession.close();
+		}
+
 	}
 
 }
