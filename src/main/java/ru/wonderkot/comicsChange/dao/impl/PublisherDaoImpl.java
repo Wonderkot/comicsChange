@@ -1,11 +1,11 @@
 /**
  * 
  */
-package ru.wonderkot.comicsChange.data.impl;
+package ru.wonderkot.comicsChange.dao.impl;
 
 import java.util.ArrayList;
 
-import ru.wonderkot.comicsChange.data.PublisherDao;
+import ru.wonderkot.comicsChange.dao.PublisherDao;
 import ru.wonderkot.comicsChange.model.Publisher;
 
 /**
@@ -48,6 +48,12 @@ public class PublisherDaoImpl implements PublisherDao {
 	public ArrayList<Publisher> getAllPublishers() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void updatePublisher(Publisher publisher) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

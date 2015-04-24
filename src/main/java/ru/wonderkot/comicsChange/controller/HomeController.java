@@ -1,7 +1,6 @@
 package ru.wonderkot.comicsChange.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,27 +9,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ru.wonderkot.comicsChange.data.impl.AuthorDaoImpl;
+import ru.wonderkot.comicsChange.dao.impl.AuthorDaoImpl;
 import ru.wonderkot.comicsChange.model.Author;
 
 @Controller
 public class HomeController {
-	@Autowired
+	@Autowired	
 	AuthorDaoImpl daoImpl = new AuthorDaoImpl();
+	
 
 	@RequestMapping(value="/")
 	public ModelAndView test(HttpServletResponse response) throws IOException{
 		
-		/*Author author = new Author();
+		Author author = new Author();
 		author.setName("test");
 		author.setPatronymic("sss");
 		author.setSurname("ssssss");
 	    daoImpl.addNewAuthor(author);
-	    System.out.println(author.getId());*/
-		ArrayList<Author>authors =   daoImpl.getAllAuthors();
-		for (Author authorTemp : authors) {
-			System.out.println(authorTemp.getName());
-		}
+	    System.out.println(author.getId());
+	    author.setName("rrrara");
+	    daoImpl.updateAuthor(author);
+	    //daoImpl.deleteAuthor(author);
+	    for (Author author2 : daoImpl.getAllAuthors()) {
+	    	System.out.println(author2.getName());
+	    }
+	    System.out.println("find");
+	    for (Author author2 : daoImpl.findAuthor(author)) {
+	    	System.out.println(author2.getName());
+	    }
 		return new ModelAndView("home");
 	}
 }

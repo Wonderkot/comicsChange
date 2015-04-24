@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
     </environments>
     <mappers>
 <!-- <mapper resource="BooksMapper.xml" /> -->
-        <mapper resource="AuthorsMapper.xml" />
+        <mapper resource="AuthorDao.xml" />
 <!-- <mapper resource="PublishersMapper.xml" /> -->
-    </mappers>
+    </mappers>    
 </configuration>

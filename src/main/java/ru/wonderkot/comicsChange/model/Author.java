@@ -3,10 +3,12 @@
  */
 package ru.wonderkot.comicsChange.model;
 
+
 /**
  * @author Wonderkot
  *
  */
+
 public class Author {
 	private Integer id;
 	private String name;

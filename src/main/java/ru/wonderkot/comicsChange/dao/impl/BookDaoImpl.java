@@ -1,11 +1,11 @@
 /**
  * 
  */
-package ru.wonderkot.comicsChange.data.impl;
+package ru.wonderkot.comicsChange.dao.impl;
 
 import java.util.ArrayList;
 
-import ru.wonderkot.comicsChange.data.BookDao;
+import ru.wonderkot.comicsChange.dao.BookDao;
 import ru.wonderkot.comicsChange.model.Book;
 
 /**
@@ -48,6 +48,12 @@ public class BookDaoImpl implements BookDao {
 	public ArrayList<Book> getAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void updateBook(Book book) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
