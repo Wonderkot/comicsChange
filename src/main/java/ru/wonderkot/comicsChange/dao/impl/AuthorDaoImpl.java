@@ -44,12 +44,12 @@ public class AuthorDaoImpl implements AuthorDao {
 	 * comicsChange.model.Author)
 	 */
 	@Override
-	public void deleteAuthor(Author author) {
-		if (author == null) {
+	public void deleteAuthor(Integer id) {
+		if (id == null) {
 			return;
 		}
 		System.out.println("DELETE AUTHOR");
-		authorDao.deleteAuthor(author);
+		authorDao.deleteAuthor(id);
 
 	}
 
@@ -89,6 +89,11 @@ public class AuthorDaoImpl implements AuthorDao {
 		}
 		System.out.println("UPDATE");
 		authorDao.updateAuthor(author);
+	}
+
+	@Override
+	public Author getAuthor(Integer id) {
+		return authorDao.getAuthor(id);
 	}
 
 }

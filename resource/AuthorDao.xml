@@ -26,7 +26,7 @@
 
 	<delete id="deleteAuthor">
 		delete from comicschange.authors where id =
-		#{author.id}
+		#{id}
 	</delete>
 
 	<select id="findAuthor" resultMap="AuthorsResult">
@@ -45,4 +45,9 @@
 		WHERE ID =
 		#{author.id};
 	</update>
+	
+	<select id="getAuthor" resultMap="AuthorsResult">
+		select * from comicschange.authors where id = #{id}
+	</select>
+	
 </mapper>

@@ -13,12 +13,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jndi.JndiObjectFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import ru.wonderkot.comicsChange.dao.AuthorDao;
+import ru.wonderkot.comicsChange.dao.BookDao;
+import ru.wonderkot.comicsChange.dao.PublisherDao;
 
 @Configuration
 @ComponentScan(basePackages = "ru.wonderkot.comicsChange")
@@ -29,7 +32,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/WEB-INF/views/");
+		resolver.setPrefix("/views/");		
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
@@ -38,6 +41,12 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations(
 				"/resources/");
+	}
+	
+	@Override
+	public void configureDefaultServletHandling(
+			DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
 	}
 
 	@Bean
@@ -75,6 +84,22 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	MapperFactoryBean<AuthorDao> authorDao() throws Exception {
 		MapperFactoryBean<AuthorDao> bean = new MapperFactoryBean<AuthorDao>();
 		bean.setMapperInterface(AuthorDao.class);
+		bean.setSqlSessionFactory(sqlSessionFactory());
+		return bean;
+	}
+	
+	@Bean
+	MapperFactoryBean<PublisherDao> publisherDao() throws Exception {
+		MapperFactoryBean<PublisherDao> bean = new MapperFactoryBean<PublisherDao>();
+		bean.setMapperInterface(PublisherDao.class);
+		bean.setSqlSessionFactory(sqlSessionFactory());
+		return bean;
+	}
+	
+	@Bean
+	MapperFactoryBean<BookDao> bookDao() throws Exception {
+		MapperFactoryBean<BookDao> bean = new MapperFactoryBean<BookDao>();
+		bean.setMapperInterface(BookDao.class);
 		bean.setSqlSessionFactory(sqlSessionFactory());
 		return bean;
 	}
