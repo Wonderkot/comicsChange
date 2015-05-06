@@ -1,0 +1,37 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Список авторов</title>
+<div style="width: 100%; float: left;">
+	<div style="float: left; width: 75%;">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Автор</th>
+					<th>Редактировать</th>
+					<th>Удалить</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="author in authors">
+					<td>{{author.name}} {{author.surname}} {{author.patronymic}}</td>
+					<td><i class="glyphicon glyphicon glyphicon-pencil"> </i></td>
+					<td><button type="button" ng-click="removeItem(author)"
+							class="btn btn-sm btn-danger">
+							<i class="glyphicon glyphicon-remove-circle"> </i>
+						</button></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div style="float: left; width: 25%;" class="panel-body">
+		<form>
+			<label>Фамилия</label><br /> <input type="text" class="input-xlarge" ng-model="author.name"><br />
+
+			<label>Имя</label><br /> <input type="text" class="input-xlarge" ng-model="author.surname"><br />
+			<label>Отчество(опционально)</label><br />
+			<input type="text" class="input-xlarge" ng-model="author.patronymic"><br />
+			<div>
+				<input type="submit" class="btn btn-success" value="Отправить" ng-click="addItem(author)">
+			</div>
+		</form>		
+	</div>
+</div>

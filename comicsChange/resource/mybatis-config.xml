@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="ru.wonderkot.comicsChange.model.Author" alias="Authors" />
+        <typeAlias type="ru.wonderkot.comicsChange.model.Book" alias="Books" />
+        <typeAlias type="ru.wonderkot.comicsChange.model.Publisher" alias="Publishers" />
+        <typeAlias type="ru.wonderkot.comicsChange.model.User" alias="Users" />
+    </typeAliases>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC" />
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:jboss/datasources/comicschange" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+<!-- <mapper resource="BooksDao.xml" /> -->
+        <mapper resource="AuthorDao.xml" />
+<!-- <mapper resource="PublishersDao.xml" /> -->
+    </mappers>    
+</configuration>
