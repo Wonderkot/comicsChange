@@ -29,9 +29,12 @@ Controllers.controller('authorController', function($scope, $http, $resource) {
 		adder.name = author.name;
 		adder.surname = author.surname;
 		adder.patronymic = author.patronymic;
-		adder.$save();
-		$scope.authors.push(author);
-		
+		adder.$save();		
+		var index =  $scope.authors.length;
+		$scope.authors.splice(index,0,adder);		
+		author.name = '';
+		author.surname = '';
+		author.patronymic = '';
 	}
 
 });

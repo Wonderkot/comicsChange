@@ -5,6 +5,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
     <typeAliases>
         <typeAlias type="ru.wonderkot.comicsChange.model.Author" alias="Authors" />
+        <typeAlias type="ru.wonderkot.comicsChange.model.Book" alias="Books" />
+        <typeAlias type="ru.wonderkot.comicsChange.model.Publisher" alias="Publishers" />
+        <typeAlias type="ru.wonderkot.comicsChange.model.User" alias="Users" />
     </typeAliases>
     <environments default="development">
         <environment id="development">
@@ -15,8 +18,8 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         </environment>
     </environments>
     <mappers>
-<!-- <mapper resource="BooksMapper.xml" /> -->
+<!-- <mapper resource="BooksDao.xml" /> -->
         <mapper resource="AuthorDao.xml" />
-<!-- <mapper resource="PublishersMapper.xml" /> -->
+<!-- <mapper resource="PublishersDao.xml" /> -->
     </mappers>    
 </configuration>

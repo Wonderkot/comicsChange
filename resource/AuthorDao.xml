@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ru.wonderkot.comicsChange.dao.AuthorDao">
-	
+
 	<resultMap type="Authors" id="AuthorsResult">
 		<id property="id" column="ID" />
 		<result property="name" column="NAME" />
@@ -22,10 +22,11 @@
 	<select id="getAllAuthors" resultMap="AuthorsResult">
 		select * from
 		comicschange.authors
+		WHERE DELETED = 0
 	</select>
 
 	<delete id="deleteAuthor">
-		delete from comicschange.authors where id =
+		UPDATE comicschange.authors SET DELETED = 1 where id =
 		#{id}
 	</delete>
 
@@ -34,6 +35,7 @@
 		comicschange.authors
 		where name = #{author.name} and surname =
 		#{author.surname} and patronymic = #{author.patronymic}
+		AND DELETED = 0
 	</select>
 
 	<update id="updateAuthor">
@@ -43,11 +45,13 @@
 		#{author.surname},
 		PATRONYMIC = #{author.patronymic}
 		WHERE ID =
-		#{author.id};
+		#{author.id}
+		AND DELETED = 0
 	</update>
-	
+
 	<select id="getAuthor" resultMap="AuthorsResult">
-		select * from comicschange.authors where id = #{id}
+		select * from
+		comicschange.authors where id = #{id} AND DELETED = 0
 	</select>
-	
+
 </mapper>
