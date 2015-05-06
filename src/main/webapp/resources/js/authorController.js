@@ -1,6 +1,4 @@
-var Controllers = angular.module('Controllers', [ 'ngResource' ]);
-
-Controllers.controller('authorController', function($scope, $http, $resource) {
+angular.module('app').controller('authorCtrl', function($scope, $http, $resource) {
 	var list = $resource('rest/getAllAuthors');
 	$scope.authors = list.query();
 

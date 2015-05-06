@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import ru.wonderkot.comicsChange.dao.AuthorDao;
 import ru.wonderkot.comicsChange.model.Author;
+import ru.wonderkot.comicsChange.model.Book;
 
 /**
  * @author Wonderkot
@@ -99,6 +100,12 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Override
 	public Author getAuthor(Integer id) {
 		return authorDao.getAuthor(id);
+	}
+
+	@Override
+	public ArrayList<Book> getAuthorBooks(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

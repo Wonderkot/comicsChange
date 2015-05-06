@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import org.apache.ibatis.annotations.Param;
 
+import ru.wonderkot.comicsChange.model.Book;
 import ru.wonderkot.comicsChange.model.Publisher;
 
 /**
@@ -16,7 +17,7 @@ import ru.wonderkot.comicsChange.model.Publisher;
 public interface PublisherDao {
 	public void addNewPublisher(@Param("publisher") Publisher publisher);
 
-	public void deletePublisher(@Param("publisher") Publisher publisher);
+	public void deletePublisher(@Param("id") Integer id);
 
 	public ArrayList<Publisher> findPublisher(
 			@Param("publisher") Publisher publisher);
@@ -24,4 +25,15 @@ public interface PublisherDao {
 	public ArrayList<Publisher> getAllPublishers();
 
 	public void updatePublisher(@Param("publisher") Publisher publisher);
+
+	public Publisher getPublisher(@Param("id") Integer id);
+
+	/**
+	 * Возвращает все книги издательства
+	 * 
+	 * @param id
+	 *            идентификатор издательства
+	 * @return
+	 */
+	public ArrayList<Book> getAllPublisherBooks(@Param("id") Integer id);
 }

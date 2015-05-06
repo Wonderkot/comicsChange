@@ -266,11 +266,11 @@ button.toast-close-button {
 }
 
 :not (.no-enter )#toast-container>div.ng-enter.ng-enter-active, :not (.no-leave
-	)#toast-container>div.ng-leave {
+	 )#toast-container>div.ng-leave {
 	opacity: 0.8;
 }
 
 :not (.no-leave )#toast-container>div.ng-leave.ng-leave-active, :not (.no-enter
-	)#toast-container>div.ng-enter {
+	 )#toast-container>div.ng-enter {
 	opacity: 0;
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ru.wonderkot.comicsChange.dao.PublisherDao">
+
+	<resultMap type="Publishers" id="PublishersResult">
+		<id property="id" column="ID" />
+		<result property="title" column="title" />
+		<result property="publisherId" column="publisher_id" />
+		<result property="authorId" column="author_id" />
+	</resultMap>
+
+
+	<insert id="addNewPublisher" parameterType="map"
+		useGeneratedKeys="true" keyProperty="publisher.id" keyColumn="ID">
+		insert
+		into comicschange.publishers
+		(name) values
+		(#{publisher.name})
+	</insert>
+
+	<select id="getAllPublishers" resultMap="PublishersResult">
+		select * from
+		comicschange.publishers WHERE DELETED = 0
+	</select>
+
+	<delete id="deletePublisher">
+		UPDATE comicschange.publishers SET DELETED = 1 WHERE
+		id =
+		#{id}
+	</delete>
+
+	<select id="findPublishers" resultMap="PublishersResult">
+		comicschange.publishers
+		where title = #{publisher.name} AND DELETED = 0
+	</select>
+
+	<update id="updatePublisher">
+		UPDATE comicschange.publishers SET
+		name =
+		#{publisher.name}
+		WHERE ID =
+		#{publisher.id} AND DELETED = 0
+	</update>
+
+	<select id="getPublisher" resultMap="PublishersResult">
+		select * from
+		comicschange.publishers where id = #{id}
+	</select>
+
+</mapper>

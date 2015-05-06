@@ -45,7 +45,7 @@ public class AuthorController {
 		daoImpl.updateAuthor(author);
 	}
 
-	@RequestMapping(value = "rest/find", method = RequestMethod.GET)
+	@RequestMapping(value = "rest/findAuthor", method = RequestMethod.GET)
 	public ArrayList<Author> find(@RequestBody Author author) {
 		return daoImpl.findAuthor(author);
 	}

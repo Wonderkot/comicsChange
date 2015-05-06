@@ -1,17 +1,17 @@
-var app = angular.module('app', [ 'Controllers', 'ngRoute' ]);
+var app = angular.module('app', [ 'ngRoute','ngResource' ]);
 
 app.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {
-		templateUrl : 'views/authors.html',
-		controller : 'authorController'
+		templateUrl : 'views/publishers.html',
+		controller : 'publisherCtrl'
 	}).when('/books/', {
 		templateUrl : 'views/books.html',
-		controller : 'bookController'
-	}).when('/pulishers/', {
+		controller : 'authorCtrl'
+	}).when('/publishers/', {
 		templateUrl : 'views/publishers.html',
-		controller : 'bookController'
+		controller : 'publisherCtrl'
 	}).when('/authors/', {
 		templateUrl : 'views/authors.html',
-	controller : 'authorController'
-})
+		controller : 'authorCtrl'
+	})
 } ]);

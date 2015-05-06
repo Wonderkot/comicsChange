@@ -26,7 +26,8 @@
 	</select>
 
 	<delete id="deleteAuthor">
-		UPDATE comicschange.authors SET DELETED = 1 where id =
+		UPDATE comicschange.authors SET DELETED = 1 where id
+		=
 		#{id}
 	</delete>
 

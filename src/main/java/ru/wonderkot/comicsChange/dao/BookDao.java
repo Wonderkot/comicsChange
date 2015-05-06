@@ -22,5 +22,6 @@ public interface BookDao {
 
 	public ArrayList<Book> findBooks(@Param("book") Book book);
 
-	public ArrayList<Book> getAll();
+	public ArrayList<Book> getAllBooks();
+	
 }
