@@ -5,6 +5,8 @@ package ru.wonderkot.comicsChange.dao.impl;
 
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,7 @@ import ru.wonderkot.comicsChange.model.Author;
 
 @Service
 public class AuthorDaoImpl implements AuthorDao {
-
+	private static Logger logger = LogManager.getLogger(AuthorDaoImpl.class);
 	@Autowired
 	private AuthorDao authorDao;
 
@@ -31,9 +33,10 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Override
 	public void addNewAuthor(Author author) {
 		if (author == null) {
+			logger.error("author model is null");
 			return;
 		}
-		System.out.println("INSERT AUTHOR");
+		logger.info("insert author");
 		authorDao.addNewAuthor(author);
 	}
 
@@ -45,10 +48,11 @@ public class AuthorDaoImpl implements AuthorDao {
 	 */
 	@Override
 	public void deleteAuthor(Integer id) {
-		if (id == null) {
+		if (id == null || id <=0) {
+			logger.error("not valid id for delete author");
 			return;
 		}
-		System.out.println("DELETE AUTHOR");
+		logger.info("DELETE AUTHOR");
 		authorDao.deleteAuthor(id);
 
 	}
@@ -63,9 +67,10 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Override
 	public ArrayList<Author> findAuthor(Author author) {
 		if (author == null) {
+			logger.error("author model is null");
 			return null;
 		}
-		System.out.println("FIND");
+		logger.info("FIND author");
 		return authorDao.findAuthor(author);
 	}
 
@@ -76,7 +81,6 @@ public class AuthorDaoImpl implements AuthorDao {
 	 */
 	@Override
 	public ArrayList<Author> getAllAuthors() {
-		System.out.println("GET ALL");
 		ArrayList<Author> authors = new ArrayList<Author>();
 		authors = authorDao.getAllAuthors();
 		return authors;
@@ -85,10 +89,11 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Override
 	public void updateAuthor(Author author) {
 		if (author == null) {
+			logger.error("author model is null");
 			return;
 		}
-		System.out.println("UPDATE");
 		authorDao.updateAuthor(author);
+		logger.info("author record successful updated");
 	}
 
 	@Override
