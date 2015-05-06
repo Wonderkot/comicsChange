@@ -28,7 +28,7 @@ $scope.addItem = function addItem(publisher) {
 		adder.$save();		
 		var index =  $scope.publishers.length;
 		$scope.publishers.splice(index,0,adder);		
-		publisher.name = '';		
+		$scope.publisher = {};		
 	}	
 
 	});
