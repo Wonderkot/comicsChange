@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import ru.wonderkot.comicsChange.dao.PublisherDao;
 import ru.wonderkot.comicsChange.model.Book;
 import ru.wonderkot.comicsChange.model.Publisher;
+import ru.wonderkot.comicsChange.utils.LogMessages;
 
 /**
  * @author Wonderkot
@@ -28,51 +29,64 @@ public class PublisherDaoImpl implements PublisherDao {
 	@Override
 	public void addNewPublisher(Publisher publisher) {
 		if (publisher == null) {
-			logger.error("empty publisher entity");
+			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
+					Publisher.class.getSimpleName());
 			return;
 		}
 		publisherDao.addNewPublisher(publisher);
-		logger.info("new publisher added");
+		logger.info(LogMessages.INSERT_NEW_OBJECT.getMesssage(),
+				Publisher.class.getSimpleName());
 	}
 
 	@Override
 	public void deletePublisher(Integer id) {
-		if (id <= 0 ) {
-			logger.error("not valid publisher id ");
+		if (id <= 0) {
+			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
 			return;
 		}
 		publisherDao.deletePublisher(id);
-		logger.warn("one publisher was deleted");
+		logger.warn(LogMessages.DELETE_OBJECT.getMesssage(),
+				Publisher.class.getSimpleName(), id);
 	}
 
 	@Override
 	public ArrayList<Publisher> findPublisher(Publisher publisher) {
 		if (publisher == null) {
-			logger.error("publisher entity is null");
+			logger.error(LogMessages.FIND.getMesssage(),
+					Publisher.class.getSimpleName());
 			return null;
 		}
 		ArrayList<Publisher> publishers = new ArrayList<>();
-		publishers =  publisherDao.findPublisher(publisher);
-		logger.info("publishers found:" + publishers.size());
+		publishers = publisherDao.findPublisher(publisher);
+		if (publishers != null && !publishers.isEmpty())
+			logger.info(LogMessages.TOTAL_FOUND.getMesssage(),
+					Publisher.class.getSimpleName(), publishers.size());
+		else {
+			logger.info(LogMessages.NOT_FOUND.getMesssage(),
+					Publisher.class.getSimpleName());
+		}
 		return publishers;
 	}
 
 	@Override
 	public ArrayList<Publisher> getAllPublishers() {
 		ArrayList<Publisher> publishers = new ArrayList<>();
-		publishers =  publisherDao.getAllPublishers();
-		logger.info("total publishers:" + publishers.size());
+		publishers = publisherDao.getAllPublishers();
+		logger.info(LogMessages.TOTAL_RECORDS.getMesssage(),
+				Publisher.class.getSimpleName(), publishers.size());
 		return publishers;
 	}
 
 	@Override
 	public void updatePublisher(Publisher publisher) {
 		if (publisher == null) {
-			logger.error("publisher entity is null");
+			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
+					Publisher.class.getSimpleName());
 			return;
 		}
 		publisherDao.updatePublisher(publisher);
-		logger.info(publisher.getId() +  "publisher was updated");
+		logger.info(LogMessages.UPDATE_OBJECT.getMesssage(),
+				Publisher.class.getSimpleName(), publisher.getId());
 	}
 
 	@Override
@@ -84,14 +98,16 @@ public class PublisherDaoImpl implements PublisherDao {
 
 	@Override
 	public Publisher getPublisher(Integer id) {
-		if (id <= 0 ) {
-			logger.error("not valid publisher id ");
+		if (id <= 0) {
+			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
 			return null;
 		}
-		Publisher publisher =  publisherDao.getPublisher(id);
-		logger.info("get publisher with id " + id);
+		Publisher publisher = publisherDao.getPublisher(id);
+		logger.info(LogMessages.GET_OBJECT.getMesssage(),
+				Publisher.class.getSimpleName(), id);
 		if (publisher == null) {
-			logger.error("publisher not found");
+			logger.error(LogMessages.OBJECT_NOT_FOUND.getMesssage(),
+					Publisher.class.getSimpleName());
 		}
 		return publisher;
 	}

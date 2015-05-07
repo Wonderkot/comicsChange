@@ -8,15 +8,12 @@ package ru.wonderkot.comicsChange.utils;
  *
  */
 public enum LogMessages {
-	MODEL_IS_NULL("{} model is null"),
-	NOT_VALID_ID("{} is not valid id"),
-	INSERT_NEW_OBJECT("insert new {}"),
-	UPDATE_OBJECT("{} with id {} has been updated"),
-	DELETE_OBJECT("{} with id {}  mark as deleted"),
-	TOTAL_RECORDS("total {}s:{}"),
-	FIND("try find {}"),
-	GET_OBJECT("get {} with id {}");
-	
+	MODEL_IS_NULL("{} model is null"), NOT_VALID_ID("{} is not valid id"), INSERT_NEW_OBJECT(
+			"insert new {}"), UPDATE_OBJECT("{} with id {} has been updated"), DELETE_OBJECT(
+			"{} with id {}  mark as deleted"), TOTAL_RECORDS("total {}s:{}"), FIND(
+			"try find {}"), GET_OBJECT("get {} with id {}"), TOTAL_FOUND(
+			"{}s found:{}"), NOT_FOUND("no {}s found"), OBJECT_NOT_FOUND(
+			"{} not found");
 
 	private final String message; // Message string
 
