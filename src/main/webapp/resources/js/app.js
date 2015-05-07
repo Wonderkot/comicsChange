@@ -6,7 +6,7 @@ app.config([ '$routeProvider', function($routeProvider) {
 		controller : 'publisherCtrl'
 	}).when('/books/', {
 		templateUrl : 'views/books.html',
-		controller : 'authorCtrl'
+		controller : 'bookCtrl'
 	}).when('/publishers/', {
 		templateUrl : 'views/publishers.html',
 		controller : 'publisherCtrl'

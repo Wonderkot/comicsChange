@@ -1,7 +1,7 @@
 <Configuration status="debug" name="MyApp" packages="">
 	<Appenders>
 		<RollingFile name="RollingFile" fileName="logs/comicsShop.log"
-			filePattern="logs/$${date:yyyy-MM}/app-%d{yyyy-MM-dd-HH}-%i.log.gz">
+			filePattern="logs/$${date:yyyy-MM}/comicsShop-%d{yyyy-MM-dd-HH}-%i.log.gz">
 			<PatternLayout>
 				<Pattern>%d{dd MMM yyyy HH:mm:ss,SSS}{GMT+4} [%p] %c{1}.[%M] %m%n</Pattern>
 			</PatternLayout>
