@@ -84,7 +84,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	MapperFactoryBean<AuthorDao> authorDao() throws Exception {
 		MapperFactoryBean<AuthorDao> bean = new MapperFactoryBean<AuthorDao>();
 		bean.setMapperInterface(AuthorDao.class);
-		bean.setSqlSessionFactory(sqlSessionFactory());
+		bean.setSqlSessionFactory(sqlSessionFactory());		
 		return bean;
 	}
 	

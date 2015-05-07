@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import ru.wonderkot.comicsChange.dao.AuthorDao;
 import ru.wonderkot.comicsChange.model.Author;
 import ru.wonderkot.comicsChange.model.Book;
+import ru.wonderkot.comicsChange.utils.LogMessages;
 
 /**
  * @author Wonderkot
@@ -25,86 +26,81 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Autowired
 	private AuthorDao authorDao;
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ru.wonderkot.comicsChange.data.AuthorDao#addNewAuthor(ru.wonderkot.
-	 * comicsChange.model.Author)
-	 */
 	@Override
 	public void addNewAuthor(Author author) {
 		if (author == null) {
-			logger.error("author model is null");
+			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
+					Author.class.getSimpleName());
 			return;
 		}
-		logger.info("insert author");
+		logger.info(LogMessages.INSERT_NEW_OBJECT.getMesssage(),
+				Author.class.getSimpleName());
 		authorDao.addNewAuthor(author);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ru.wonderkot.comicsChange.data.AuthorDao#deleteAuthor(ru.wonderkot.
-	 * comicsChange.model.Author)
-	 */
 	@Override
 	public void deleteAuthor(Integer id) {
-		if (id == null || id <=0) {
-			logger.error("not valid id for delete author");
+		if (id <= 0) {
+			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
+					Author.class.getSimpleName());
 			return;
 		}
-		logger.info("DELETE AUTHOR");
+		logger.warn(LogMessages.DELETE_OBJECT.getMesssage(),
+				Author.class.getSimpleName(), id);
 		authorDao.deleteAuthor(id);
 
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * ru.wonderkot.comicsChange.data.AuthorDao#findAuthor(ru.wonderkot.comicsChange
-	 * .model.Author)
-	 */
 	@Override
 	public ArrayList<Author> findAuthor(Author author) {
 		if (author == null) {
-			logger.error("author model is null");
+			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
+					Author.class.getSimpleName());
 			return null;
 		}
-		logger.info("FIND author");
+		logger.info(LogMessages.FIND.getMesssage(),
+				Author.class.getSimpleName());
 		return authorDao.findAuthor(author);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see ru.wonderkot.comicsChange.data.AuthorDao#getAllAuthors()
-	 */
 	@Override
 	public ArrayList<Author> getAllAuthors() {
 		ArrayList<Author> authors = new ArrayList<Author>();
 		authors = authorDao.getAllAuthors();
+		logger.info(LogMessages.TOTAL_RECORDS.getMesssage(),
+				Author.class.getSimpleName(), authors.size());
 		return authors;
 	}
 
 	@Override
 	public void updateAuthor(Author author) {
 		if (author == null) {
-			logger.error("author model is null");
+			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
+					Author.class.getSimpleName());
 			return;
 		}
 		authorDao.updateAuthor(author);
-		logger.info("author record successful updated");
+		logger.info(LogMessages.UPDATE_OBJECT.getMesssage(),
+				Author.class.getSimpleName(), author.getId());
 	}
 
 	@Override
 	public Author getAuthor(Integer id) {
+		if (id <= 0) {
+			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
+			return null;
+		}
+		logger.info(LogMessages.GET_OBJECT.getMesssage(),
+				Author.class.getSimpleName(), id);
 		return authorDao.getAuthor(id);
 	}
 
 	@Override
 	public ArrayList<Book> getAuthorBooks(Integer id) {
-		// TODO Auto-generated method stub
+		if (id <= 0) {
+			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
+			return null;
+		}
 		return null;
 	}
 

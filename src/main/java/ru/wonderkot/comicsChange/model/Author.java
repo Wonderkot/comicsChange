@@ -3,12 +3,14 @@
  */
 package ru.wonderkot.comicsChange.model;
 
+import org.apache.ibatis.type.Alias;
+
 
 /**
  * @author Wonderkot
  *
  */
-
+@Alias("Authors")
 public class Author {
 	private Integer id;
 	private String name;
