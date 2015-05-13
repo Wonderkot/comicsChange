@@ -1,6 +1,6 @@
 angular.module('app').controller('authorCtrl',
 		function($scope, $http, $resource) {
-			var list = $resource('rest/getAllAuthors');
+			var list = $resource('authors/getAllAuthors');
 			$scope.authors = list.query();
 
 			$scope.removeItem = function removeItem(author) {
@@ -11,13 +11,13 @@ angular.module('app').controller('authorCtrl',
 				;
 
 				/*
-				 * var remove = $resource('rest/deleteAuthor'); remove.id =
+				 * var remove = $resource('authors/deleteAuthor'); remove.id =
 				 * author.id; remove.$remove();
 				 */
 
 				var deleteReq = {
 					method : 'DELETE',
-					url : 'rest/deleteAuthor',
+					url : 'authors/deleteAuthor',
 					params : {
 						id : author.id
 					},
@@ -27,7 +27,7 @@ angular.module('app').controller('authorCtrl',
 			};
 
 			$scope.addItem = function addItem(author) {
-				var add = $resource('rest/addNewAuthor');
+				var add = $resource('authors/addNewAuthor');
 				var adder = new add();
 				adder.name = author.name;
 				adder.surname = author.surname;

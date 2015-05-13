@@ -1,6 +1,6 @@
 angular.module('app').controller('bookCtrl', function($scope, $http, $resource) {
 
-var list = $resource('rest/getAllBooks');
+var list = $resource('books/getAllBooks');
 $scope.books = list.query();
 
 $scope.removeItem = function removeItem(book) {
@@ -12,7 +12,7 @@ $scope.removeItem = function removeItem(book) {
 
 		var deleteReq = {
 			method : 'DELETE',
-			url : 'rest/deleteBook',
+			url : 'books/deleteBook',
 			params : {
 				id : book.id
 			},
@@ -22,7 +22,7 @@ $scope.removeItem = function removeItem(book) {
 	};
 	
 $scope.addItem = function addItem(book) {		
-		var add = $resource('rest/addNewBook');
+		var add = $resource('books/addNewBook');
 		var adder = new add();
 		adder.name = book.name;		
 		adder.$save();		

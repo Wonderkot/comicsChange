@@ -32,7 +32,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	@Bean
 	public ViewResolver getViewResolver() {
 		InternalResourceViewResolver resolver = new InternalResourceViewResolver();
-		resolver.setPrefix("/views/");		
+		resolver.setPrefix("/views/");
 		resolver.setSuffix(".jsp");
 		return resolver;
 	}
@@ -42,7 +42,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/resources/**").addResourceLocations(
 				"/resources/");
 	}
-	
+
 	@Override
 	public void configureDefaultServletHandling(
 			DefaultServletHandlerConfigurer configurer) {
@@ -53,11 +53,13 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 		sqlSessionFactory.setDataSource(dataSource());
-
 		sqlSessionFactory.setConfigLocation(new ClassPathResource(
 				"mybatis-config.xml"));
 		sqlSessionFactory
 				.setTypeAliasesPackage("ru.wonderkot.comicsChange.model");
+		/*Resource[] mapperLocations = new Resource[0];
+		mapperLocations[0] = new ClassPathResource("*Dao.xml");
+		sqlSessionFactory.setMapperLocations(mapperLocations);*/
 		return (SqlSessionFactory) sqlSessionFactory.getObject();
 	}
 
@@ -74,20 +76,21 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		return (DataSource) dataSource.getObject();
 	}
 
-	/*
-	 * @Bean public SqlSession sqlSession() throws Exception {
-	 * SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(
-	 * sqlSessionFactory()); return sessionTemplate; }
-	 */
+	/*@Bean
+	public SqlSession sqlSession() throws Exception {
+		SqlSessionTemplate sessionTemplate = new SqlSessionTemplate(
+				sqlSessionFactory());
+		return sessionTemplate;
+	}*/
 
 	@Bean
 	MapperFactoryBean<AuthorDao> authorDao() throws Exception {
 		MapperFactoryBean<AuthorDao> bean = new MapperFactoryBean<AuthorDao>();
 		bean.setMapperInterface(AuthorDao.class);
-		bean.setSqlSessionFactory(sqlSessionFactory());		
+		bean.setSqlSessionFactory(sqlSessionFactory());
 		return bean;
 	}
-	
+
 	@Bean
 	MapperFactoryBean<PublisherDao> publisherDao() throws Exception {
 		MapperFactoryBean<PublisherDao> bean = new MapperFactoryBean<PublisherDao>();
@@ -95,7 +98,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		bean.setSqlSessionFactory(sqlSessionFactory());
 		return bean;
 	}
-	
+
 	@Bean
 	MapperFactoryBean<BookDao> bookDao() throws Exception {
 		MapperFactoryBean<BookDao> bean = new MapperFactoryBean<BookDao>();

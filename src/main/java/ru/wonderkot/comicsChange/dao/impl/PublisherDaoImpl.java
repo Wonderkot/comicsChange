@@ -70,8 +70,8 @@ public class PublisherDaoImpl implements PublisherDao {
 
 	@Override
 	public ArrayList<Publisher> getAllPublishers() {
-		ArrayList<Publisher> publishers = new ArrayList<>();
-		publishers = publisherDao.getAllPublishers();
+		ArrayList<Publisher> publishers = new ArrayList<>();		
+		publishers = publisherDao.getAllPublishers();		
 		logger.info(LogMessages.TOTAL_RECORDS.getMesssage(),
 				Publisher.class.getSimpleName(), publishers.size());
 		return publishers;

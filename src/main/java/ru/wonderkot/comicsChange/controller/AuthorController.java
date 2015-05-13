@@ -21,36 +21,37 @@ import ru.wonderkot.comicsChange.model.Author;
  *
  */
 @RestController
+@RequestMapping("/authors")
 public class AuthorController {
 	@Autowired
 	AuthorDaoImpl daoImpl;
 
-	@RequestMapping(value = "rest/getAllAuthors", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllAuthors", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<Author> getAuthors() {
 		return daoImpl.getAllAuthors();
 	}
 
-	@RequestMapping(value = "rest/addNewAuthor", method = RequestMethod.POST)
+	@RequestMapping(value = "/addNewAuthor", method = RequestMethod.POST)
 	public void addAuthor(@RequestBody Author author) {
 		daoImpl.addNewAuthor(author);
 	}
 
-	@RequestMapping(value = "rest/deleteAuthor", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deleteAuthor", method = RequestMethod.DELETE)
 	public void deleteAuthor(@RequestParam() Integer id) {
 		daoImpl.deleteAuthor(id);
 	}
 
-	@RequestMapping(value = "rest/updateAuthor", method = RequestMethod.POST)
+	@RequestMapping(value = "/updateAuthor", method = RequestMethod.POST)
 	public void updateAuthor(@RequestBody Author author) {
 		daoImpl.updateAuthor(author);
 	}
 
-	@RequestMapping(value = "rest/findAuthor", method = RequestMethod.GET)
+	@RequestMapping(value = "/findAuthor", method = RequestMethod.GET)
 	public ArrayList<Author> find(@RequestBody Author author) {
 		return daoImpl.findAuthor(author);
 	}
 
-	@RequestMapping(value = "rest/getAuthor", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAuthor", method = RequestMethod.GET)
 	public Author getAuthor(@RequestBody Integer id) {
 		return daoImpl.getAuthor(id);
 	}

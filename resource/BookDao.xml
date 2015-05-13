@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="ru.wonderkot.comicsChange.dao.BookDao">
 
-	<resultMap type="Books" id="BooksResult">
+	<resultMap type="Books" id="BooksResult" autoMapping="true">
 		<id property="id" column="ID" />
-		<result property="title" column="title" />
+		<!-- <result property="title" column="title" />
 		<result property="publisherId" column="publisher_id" />
-		<result property="authorId" column="author_id" />
+		<result property="authorId" column="author_id" /> -->
 	</resultMap>
 
 

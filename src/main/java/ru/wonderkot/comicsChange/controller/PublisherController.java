@@ -21,36 +21,37 @@ import ru.wonderkot.comicsChange.model.Publisher;
  *
  */
 @RestController
+@RequestMapping("/publishers")
 public class PublisherController {
 	@Autowired
 	PublisherDaoImpl daoImpl;
 	
-	@RequestMapping(value = "rest/getAllPublishers", method = RequestMethod.GET)
+	@RequestMapping(value = "/getAllPublishers", method = RequestMethod.GET)
 	public @ResponseBody ArrayList<Publisher> getPublishers() {
 		return daoImpl.getAllPublishers();
 	}
 
-	@RequestMapping(value = "rest/addNewPublisher", method = RequestMethod.POST)
+	@RequestMapping(value = "/addNewPublisher", method = RequestMethod.POST)
 	public void addPublisher(@RequestBody Publisher publisher) {
 		daoImpl.addNewPublisher(publisher);		
 	}
 
-	@RequestMapping(value = "rest/deletePublisher", method = RequestMethod.DELETE)
+	@RequestMapping(value = "/deletePublisher", method = RequestMethod.DELETE)
 	public void deletePublisher(@RequestParam() Integer id) {
 		daoImpl.deletePublisher(id);
 	}
 
-	@RequestMapping(value = "rest/updatePublisher", method = RequestMethod.POST)
+	@RequestMapping(value = "/updatePublisher", method = RequestMethod.POST)
 	public void updatePublisher(@RequestBody Publisher publisher) {
 		daoImpl.updatePublisher(publisher);
 	}
 
-	@RequestMapping(value = "rest/findPublisher", method = RequestMethod.GET)
+	@RequestMapping(value = "/findPublisher", method = RequestMethod.GET)
 	public ArrayList<Publisher> find(@RequestBody Publisher publisher) {
 		return daoImpl.findPublisher(publisher);
 	}
 
-	@RequestMapping(value = "rest/getPublisher", method = RequestMethod.GET)
+	@RequestMapping(value = "/getPublisher", method = RequestMethod.GET)
 	public Publisher getPublisher(@RequestBody Integer id) {
 		return daoImpl.getPublisher(id);
 	}
