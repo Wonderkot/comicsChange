@@ -1,16 +1,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div style="width: 100%; float: left;">
 	<div style="float: left; width: 75%;">
-		<table class="table table-striped">
+		<table st-table="displayedCollection" st-safe-src="publishers" class="table table-striped">
 			<thead>
 				<tr>
-					<th>Издательство</th>
+					<th st-soty="id">ID</th>
+					<th st-sort="name">Издательство</th>
 					<th>Редактировать</th>
 					<th>Удалить</th>
+					<th><button class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus-sign"></i></button></th>					
 				</tr>
+				<tr>
+				<th colspan="4"><input st-search="" class="form-control" placeholder="Поиск" type="text"/></th>
+			</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="publisher in publishers">
+				<tr ng-repeat="publisher in displayedCollection">
+					<td>{{publisher.id}}</td>
 					<td>{{publisher.name}}</td>
 					<td><i class="glyphicon glyphicon glyphicon-pencil"> </i></td>
 					<td><button type="button" ng-click="removeItem(publisher)"

@@ -2,6 +2,7 @@ angular.module('app').controller('bookCtrl', function($scope, $http, $resource) 
 
 var list = $resource('books/getAllBooks');
 $scope.books = list.query();
+$scope.displayedCollection = [].concat($scope.books);
 
 $scope.removeItem = function removeItem(book) {
 		var index = $scope.books.indexOf(book);

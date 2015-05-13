@@ -2,16 +2,23 @@
 <title>Список авторов</title>
 <div style="width: 100%; float: left;">
 	<div style="float: left; width: 75%;">
-		<table class="table table-striped">
+		<table st-table="displayedCollection" st-safe-src="authors"
+			class="table table-striped">
 			<thead>
-				<tr>
-					<th>Автор</th>
+				<tr>	
+					<th st-sort="id">ID</th>
+					<th st-sort="name">Автор</th>
 					<th>Редактировать</th>
 					<th>Удалить</th>
 				</tr>
+				<tr>
+					<th colspan="3"><input st-search="" class="form-control"
+						placeholder="Поиск" type="text" /></th>
+				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="author in authors">
+				<tr ng-repeat="author in displayedCollection">
+					<td>{{author.id}}</td>
 					<td>{{author.name}} {{author.surname}} {{author.patronymic}}</td>
 					<td><i class="glyphicon glyphicon glyphicon-pencil"> </i></td>
 					<td><button type="button" ng-click="removeItem(author)"

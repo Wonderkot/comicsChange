@@ -2,6 +2,7 @@ angular.module('app').controller('publisherCtrl', function($scope, $http, $resou
 
 var list = $resource('publishers/getAllPublishers');
 $scope.publishers = list.query();
+$scope.displayedCollection = [].concat($scope.publishers);
 
 $scope.removeItem = function removeItem(publisher) {
 		var index = $scope.publishers.indexOf(publisher);

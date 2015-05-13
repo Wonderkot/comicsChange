@@ -2,6 +2,7 @@ angular.module('app').controller('authorCtrl',
 		function($scope, $http, $resource) {
 			var list = $resource('authors/getAllAuthors');
 			$scope.authors = list.query();
+			$scope.displayedCollection = [].concat($scope.authors);
 
 			$scope.removeItem = function removeItem(author) {
 				var index = $scope.authors.indexOf(author);
