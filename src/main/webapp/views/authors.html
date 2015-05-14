@@ -20,8 +20,8 @@
 				<tr ng-repeat="author in displayedCollection">
 					<td>{{author.id}}</td>
 					<td>{{author.name}} {{author.surname}} {{author.patronymic}}</td>
-					<td><i ng-click="open(author)"
-						class="glyphicon glyphicon glyphicon-pencil"></i></td>
+					<td><a><i ng-click="open(author)"
+						class="glyphicon glyphicon glyphicon-pencil"></i></a></td>
 					<td><button type="button" ng-click="removeItem(author)"
 							class="btn btn-sm btn-danger">
 							<i class="glyphicon glyphicon-remove-circle"> </i>
