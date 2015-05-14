@@ -1,4 +1,4 @@
-var app = angular.module('app', [ 'ngRoute', 'ngResource', 'smart-table' ]);
+var app = angular.module('app', [ 'ngRoute', 'ngResource', 'smart-table','ui.bootstrap']);
 
 app.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/', {

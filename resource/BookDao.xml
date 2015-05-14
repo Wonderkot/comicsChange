@@ -19,11 +19,6 @@
 		select * from publishers where id = #{publisher_id}
 	</select>
 
-	<!-- <resultMap type="Authors" id="AuthorsResult" autoMapping="true"> <id 
-		property="id" column="author_id" /> </resultMap> <resultMap type="Publishers" 
-		id="PublishersResult" autoMapping="true"> <id property="id" column="publisher_id" 
-		/> </resultMap> -->
-
 	<insert id="addNewBook" parameterType="map" useGeneratedKeys="true"
 		keyProperty="book.id" keyColumn="ID">
 		insert into comicschange.comics_book

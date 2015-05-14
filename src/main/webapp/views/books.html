@@ -3,6 +3,7 @@
 	class="table table-striped">
 	<thead>
 		<tr>
+			<th st-sort="id">ID</th>
 			<th st-sort="publisher">Издатель</th>
 			<th st-sort="author">Автор</th>
 			<th st-sort="title">Название</th>
@@ -16,6 +17,7 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="book in displayedCollection">
+			<td>{{book.id}}</td>
 			<td>{{book.publisher.name}}</td>
 			<td>{{book.author.surname}} {{book.author.name}}
 				{{book.author.patronymic}}</td>

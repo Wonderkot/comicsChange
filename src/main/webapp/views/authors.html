@@ -20,7 +20,8 @@
 				<tr ng-repeat="author in displayedCollection">
 					<td>{{author.id}}</td>
 					<td>{{author.name}} {{author.surname}} {{author.patronymic}}</td>
-					<td><i class="glyphicon glyphicon glyphicon-pencil"> </i></td>
+					<td><i ng-click="open(author)"
+						class="glyphicon glyphicon glyphicon-pencil"></i></td>
 					<td><button type="button" ng-click="removeItem(author)"
 							class="btn btn-sm btn-danger">
 							<i class="glyphicon glyphicon-remove-circle"> </i>
@@ -29,17 +30,28 @@
 			</tbody>
 		</table>
 	</div>
-	<div style="float: left; width: 25%;" class="panel-body">
-		<form>
-			<label>Фамилия</label><br /> <input type="text" class="input-xlarge"
-				ng-model="author.name"><br /> <label>Имя</label><br /> <input
-				type="text" class="input-xlarge" ng-model="author.surname"><br />
-			<label>Отчество(опционально)</label><br /> <input type="text"
-				class="input-xlarge" ng-model="author.patronymic"><br />
-			<div>
-				<input type="submit" class="btn btn-success" value="Отправить"
-					ng-click="addItem(author)">
-			</div>
-		</form>
+</div>
+
+<script type="text/ng-template" id="myModalContent.html">
+<div class="modal-header">
+	<h3 class="modal-title">Редактирование</h3>
+</div>
+<div class="modal-body">
+	<div class="control-group">
+		<label class="control-label" for="name">Имя</label> <input type="text"
+			ng-model="author.name" id="name">
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="surname">Фамилия</label> <input
+			type="text" ng-model="author.surname" id="surname">
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="patronymic">Отчество</label> <input
+			type="text" ng-model="author.patronymic" id="patronymic">
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">OK</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
 	</div>
 </div>
+    </script>

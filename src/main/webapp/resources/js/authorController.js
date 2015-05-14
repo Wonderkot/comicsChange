@@ -1,5 +1,5 @@
 angular.module('app').controller('authorCtrl',
-		function($scope, $http, $resource) {
+		function($scope, $http, $resource, $modal) {
 			var list = $resource('authors/getAllAuthors');
 			$scope.authors = list.query();
 			$scope.displayedCollection = [].concat($scope.authors);
@@ -35,8 +35,25 @@ angular.module('app').controller('authorCtrl',
 				adder.patronymic = author.patronymic;
 				adder.$save();
 				var index = $scope.authors.length;
-				$scope.authors.splice(index, 0, adder);				
+				$scope.authors.splice(index, 0, adder);
 				$scope.author = {};
 			}
+
+			$scope.open = function(author) {
+
+				var modalInstance = $modal.open({
+					animation : $scope.animationsEnabled,
+					templateUrl : 'myModalContent.html',
+					controller : 'ModalAuthorCtrl',
+					resolve : {
+						editAuthor : function() {
+							return author;
+						},
+						list : function() {
+							return $scope.authors;
+						}
+					}
+				})
+			};
 
 		});
