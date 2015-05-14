@@ -4,9 +4,8 @@
 
 	<resultMap type="Authors" id="AuthorsResult" autoMapping="true">
 		<id property="id" column="ID" />
-		<!-- <result property="name" column="NAME" />
-		<result property="surname" column="SURNAME" />
-		<result property="patronymic" column="PATRONYMIC" /> -->
+		<!-- <result property="name" column="NAME" /> <result property="surname" 
+			column="SURNAME" /> <result property="patronymic" column="PATRONYMIC" /> -->
 	</resultMap>
 
 

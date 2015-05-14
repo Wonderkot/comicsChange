@@ -4,11 +4,25 @@
 
 	<resultMap type="Books" id="BooksResult" autoMapping="true">
 		<id property="id" column="ID" />
-		<!-- <result property="title" column="title" />
-		<result property="publisherId" column="publisher_id" />
-		<result property="authorId" column="author_id" /> -->
+		<association property="publisher" column="publisher_id"
+			javaType="Publisher" select="selectPublisher" />
+		<association property="author" column="author_id"
+			javaType="Author" select="selectAuthor" />
 	</resultMap>
 
+	<select id="selectAuthor" parameterType="int" resultType="Author">
+		select
+		* from authors where id = #{author_id}
+	</select>
+
+	<select id="selectPublisher" parameterType="int" resultType="Publisher">
+		select * from publishers where id = #{publisher_id}
+	</select>
+
+	<!-- <resultMap type="Authors" id="AuthorsResult" autoMapping="true"> <id 
+		property="id" column="author_id" /> </resultMap> <resultMap type="Publishers" 
+		id="PublishersResult" autoMapping="true"> <id property="id" column="publisher_id" 
+		/> </resultMap> -->
 
 	<insert id="addNewBook" parameterType="map" useGeneratedKeys="true"
 		keyProperty="book.id" keyColumn="ID">

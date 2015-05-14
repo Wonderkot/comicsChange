@@ -10,8 +10,9 @@ package ru.wonderkot.comicsChange.model;
 public class Book {
 	private Long id;
 	private String title;
-	private Long publisherId;
-	private Long authorId;
+	private Publisher publisher;
+	private Author author;
+	
 	public Long getId() {
 		return id;
 	}
@@ -24,16 +25,16 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Long getPublisherId() {
-		return publisherId;
+	public Publisher getPublisher() {
+		return publisher;
 	}
-	public void setPublisherId(Long publisherId) {
-		this.publisherId = publisherId;
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
 	}
-	public Long getAuthorId() {
-		return authorId;
+	public Author getAuthor() {
+		return author;
 	}
-	public void setAuthorId(Long authorId) {
-		this.authorId = authorId;
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 }

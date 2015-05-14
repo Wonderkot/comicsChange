@@ -16,8 +16,9 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="book in displayedCollection">
-			<td>{{book.publisher}}</td>
-			<td>{{book.author}}</td>
+			<td>{{book.publisher.name}}</td>
+			<td>{{book.author.surname}} {{book.author.name}}
+				{{book.author.patronymic}}</td>
 			<td>{{book.title}}</td>
 			<td><span></span></td>
 			<td><button type="button" ng-click="removeItem(book)"
