@@ -9,14 +9,15 @@
 					<th st-sort="id">ID</th>
 					<th st-sort="name">Автор</th>
 					<th>Редактировать</th>
-					<th>Удалить</th>					
+					<th>Удалить</th>
 				</tr>
 				<tr>
 					<th colspan="4"><input st-search="" class="form-control"
 						placeholder="Поиск" type="text" /></th>
-					<th><button class="btn btn-sm btn-success" ng-click="addItem()">Добавить
-							<i class="glyphicon glyphicon-plus-sign"></i>
-						</button></th>	
+					<th><button class="btn btn-sm btn-success"
+							ng-click="addItem()">
+							Добавить <i class="glyphicon glyphicon-plus-sign"></i>
+						</button></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -24,7 +25,7 @@
 					<td>{{author.id}}</td>
 					<td>{{author.name}} {{author.surname}} {{author.patronymic}}</td>
 					<td><a><i ng-click="open(author)"
-						class="glyphicon glyphicon glyphicon-pencil"></i></a></td>
+							class="glyphicon glyphicon glyphicon-pencil"></i></a></td>
 					<td><button type="button" ng-click="removeItem(author)"
 							class="btn btn-sm btn-danger">
 							<i class="glyphicon glyphicon-remove-circle"> </i>

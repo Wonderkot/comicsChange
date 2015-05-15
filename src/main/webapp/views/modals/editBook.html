@@ -1,0 +1,26 @@
+<div class="modal-header">
+	<h3 class="modal-title">Редактировать комикс</h3>
+</div>
+<div class="modal-body">
+	<div class="control-group">
+		<label class="control-label" for="name">Название</label> <input
+			type="text" ng-model="book.title" id="name">
+	</div>
+	<div>
+		<label class="control-label" for="publisher">Издетельство</label> <select
+			id="publisher" ng-model="publisher"
+			ng-options="item as item.name for item in publishers track by item.id">
+		</select>
+	</div>
+	<div>
+		<label class="control-label" for="author">Автор</label> <select
+			id="author" ng-model="author"
+			ng-options="item as item.name for item in authors track by item.id">
+		</select>
+	</div>
+
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok(book,author,publisher)">OK</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</div>

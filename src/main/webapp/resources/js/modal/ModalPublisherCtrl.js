@@ -1,5 +1,5 @@
 angular.module('app').controller('ModalPublisherEditCtrl',
-		function($scope, $modalInstance, $resource, editPublisher) {
+		function($scope, $modalInstance, $resource, editPublisher,list) {
 			$scope.publisher = editPublisher;
 			$scope.ok = function() {
 				var add = $resource('publishers/updatePublisher');
@@ -7,6 +7,7 @@ angular.module('app').controller('ModalPublisherEditCtrl',
 				adder.name = editPublisher.name;
 				adder.id = editPublisher.id;
 				adder.$save();
+				list.push(adder);
 				$modalInstance.close();
 			};
 

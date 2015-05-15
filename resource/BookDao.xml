@@ -25,7 +25,7 @@
 		(title,
 		publisher_id,
 		author_id) values
-		(#{book.title},#{book.publisherId},#{book.authorId})
+		(#{book.title},#{book.publisher.id},#{book.author.id})
 	</insert>
 
 	<select id="getAllBooks" resultMap="BooksResult">
@@ -50,9 +50,9 @@
 		title =
 		#{book.title},
 		author_id =
-		#{book.author_id},
+		#{book.author.id},
 		publisher_id =
-		#{book.publisherId}
+		#{book.publisher.id}
 		WHERE ID =
 		#{book.id} AND DELETED = 0
 	</update>

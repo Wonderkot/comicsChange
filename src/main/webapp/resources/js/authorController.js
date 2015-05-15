@@ -10,12 +10,6 @@ angular.module('app').controller('authorCtrl',
 					$scope.authors.splice(index, 1);
 				}
 				;
-
-				/*
-				 * var remove = $resource('authors/deleteAuthor'); remove.id =
-				 * author.id; remove.$remove();
-				 */
-
 				var deleteReq = {
 					method : 'DELETE',
 					url : 'authors/deleteAuthor',
@@ -49,6 +43,9 @@ angular.module('app').controller('authorCtrl',
 					resolve : {
 						editAuthor : function() {
 							return author;
+						},
+						list : function() {
+							return $scope.authors
 						}
 					}
 				})

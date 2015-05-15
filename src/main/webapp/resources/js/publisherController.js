@@ -35,7 +35,7 @@ angular.module('app').controller('publisherCtrl',
 					}
 				})
 			}
-			
+
 			$scope.open = function(publisher) {
 
 				var modalInstance = $modal.open({
@@ -45,6 +45,9 @@ angular.module('app').controller('publisherCtrl',
 					resolve : {
 						editPublisher : function() {
 							return publisher;
+						},
+						list : function() {
+							return $scope.publishers
 						}
 					}
 				})

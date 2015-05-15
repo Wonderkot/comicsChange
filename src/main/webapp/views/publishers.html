@@ -13,9 +13,10 @@
 				<tr>
 					<th colspan="4"><input st-search="" class="form-control"
 						placeholder="Поиск" type="text" /></th>
-					<th><button class="btn btn-sm btn-success" ng-click="addItem()">Добавить
-							<i class="glyphicon glyphicon-plus-sign"></i>
-						</button></th>	
+					<th><button class="btn btn-sm btn-success"
+							ng-click="addItem()">
+							Добавить <i class="glyphicon glyphicon-plus-sign"></i>
+						</button></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -23,7 +24,7 @@
 					<td>{{publisher.id}}</td>
 					<td>{{publisher.name}}</td>
 					<td><a><i ng-click="open(publisher)"
-						class="glyphicon glyphicon glyphicon-pencil"></i></a></td>
+							class="glyphicon glyphicon glyphicon-pencil"></i></a></td>
 					<td><button type="button" ng-click="removeItem(publisher)"
 							class="btn btn-sm btn-danger">
 							<i class="glyphicon glyphicon-remove-circle"> </i>
