@@ -59,14 +59,14 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 				.setTypeAliasesPackage("ru.wonderkot.comicsChange.model");
 		/*Resource[] mapperLocations = new Resource[0];
 		mapperLocations[0] = new ClassPathResource("*Dao.xml");
-		sqlSessionFactory.setMapperLocations(mapperLocations);*/
+		sqlSessionFactory.setMapperLocations(mapperLocations);*/		
 		return (SqlSessionFactory) sqlSessionFactory.getObject();
 	}
 
 	@Bean
 	public DataSource dataSource() throws NamingException {
 		JndiObjectFactoryBean dataSource = new JndiObjectFactoryBean();
-		dataSource.setJndiName("java:jboss/datasources/comicschange");
+		dataSource.setJndiName("java:jboss/datasources/comicschange");		
 		try {
 			dataSource.afterPropertiesSet();
 		} catch (IllegalArgumentException e) {
@@ -103,7 +103,7 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 	MapperFactoryBean<BookDao> bookDao() throws Exception {
 		MapperFactoryBean<BookDao> bean = new MapperFactoryBean<BookDao>();
 		bean.setMapperInterface(BookDao.class);
-		bean.setSqlSessionFactory(sqlSessionFactory());
+		bean.setSqlSessionFactory(sqlSessionFactory());		
 		return bean;
 	}
 

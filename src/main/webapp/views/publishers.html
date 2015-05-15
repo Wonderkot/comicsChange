@@ -1,6 +1,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <div style="width: 100%; float: left;">
-	<div style="float: left; width: 75%;">
+	<div style="float: left; width: 100%;">
 		<table st-table="displayedCollection" st-safe-src="publishers"
 			class="table table-striped">
 			<thead>
@@ -9,20 +9,21 @@
 					<th st-sort="name">Издательство</th>
 					<th>Редактировать</th>
 					<th>Удалить</th>
-					<th><button class="btn btn-sm btn-success">
-							<i class="glyphicon glyphicon-plus-sign"></i>
-						</button></th>
 				</tr>
 				<tr>
 					<th colspan="4"><input st-search="" class="form-control"
 						placeholder="Поиск" type="text" /></th>
+					<th><button class="btn btn-sm btn-success" ng-click="addItem()">Добавить
+							<i class="glyphicon glyphicon-plus-sign"></i>
+						</button></th>	
 				</tr>
 			</thead>
 			<tbody>
 				<tr ng-repeat="publisher in displayedCollection">
 					<td>{{publisher.id}}</td>
 					<td>{{publisher.name}}</td>
-					<td><i class="glyphicon glyphicon glyphicon-pencil"> </i></td>
+					<td><a><i ng-click="open(publisher)"
+						class="glyphicon glyphicon glyphicon-pencil"></i></a></td>
 					<td><button type="button" ng-click="removeItem(publisher)"
 							class="btn btn-sm btn-danger">
 							<i class="glyphicon glyphicon-remove-circle"> </i>
@@ -30,15 +31,5 @@
 				</tr>
 			</tbody>
 		</table>
-	</div>
-	<div style="float: left; width: 25%;" class="panel-body">
-		<form>
-			<label>Название</label><br /> <input type="text"
-				class="input-xlarge" ng-model="publisher.name"><br />
-			<div>
-				<input type="submit" class="btn btn-success" value="Отправить"
-					ng-click="addItem(publisher)">
-			</div>
-		</form>
 	</div>
 </div>

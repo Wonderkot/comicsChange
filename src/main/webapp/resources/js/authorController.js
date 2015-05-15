@@ -27,30 +27,28 @@ angular.module('app').controller('authorCtrl',
 				$http(deleteReq).success();
 			};
 
-			$scope.addItem = function addItem(author) {
-				var add = $resource('authors/addNewAuthor');
-				var adder = new add();
-				adder.name = author.name;
-				adder.surname = author.surname;
-				adder.patronymic = author.patronymic;
-				adder.$save();
-				var index = $scope.authors.length;
-				$scope.authors.splice(index, 0, adder);
-				$scope.author = {};
+			$scope.addItem = function addItem() {
+				var modalInstance = $modal.open({
+					animation : $scope.animationsEnabled,
+					templateUrl : 'views/modals/addAuthor.html',
+					controller : 'ModalAuthorAddCtrl',
+					resolve : {
+						list : function() {
+							return $scope.authors
+						}
+					}
+				})
 			}
 
 			$scope.open = function(author) {
 
 				var modalInstance = $modal.open({
 					animation : $scope.animationsEnabled,
-					templateUrl : 'myModalContent.html',
-					controller : 'ModalAuthorCtrl',
+					templateUrl : 'views/modals/editAuthor.html',
+					controller : 'ModalAuthorEditCtrl',
 					resolve : {
 						editAuthor : function() {
 							return author;
-						},
-						list : function() {
-							return $scope.authors;
 						}
 					}
 				})

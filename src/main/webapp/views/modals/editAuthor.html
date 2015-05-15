@@ -1,0 +1,21 @@
+<div class="modal-header">
+	<h3 class="modal-title">Редактировать автора</h3>
+</div>
+<div class="modal-body">
+	<div class="control-group">
+		<label class="control-label" for="name">Имя</label> <input type="text"
+			ng-model="author.name" id="name">
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="surname">Фамилия</label> <input
+			type="text" ng-model="author.surname" id="surname">
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="patronymic">Отчество</label> <input
+			type="text" ng-model="author.patronymic" id="patronymic">
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" ng-click="ok()">OK</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
+</div>
