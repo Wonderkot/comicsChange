@@ -86,6 +86,9 @@ public class BookDaoImpl implements BookDao {
 		books = bookDao.getAllBooks();
 		logger.info(LogMessages.TOTAL_RECORDS.getMesssage(),
 				Book.class.getSimpleName(), books.size());
+		for (Book book : books) {
+			System.out.println(book.getCoverMain());
+		}
 		return books;
 	}
 

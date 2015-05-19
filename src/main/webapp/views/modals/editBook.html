@@ -18,6 +18,10 @@
 			ng-options="item as item.name for item in authors track by item.id">
 		</select>
 	</div>
+	<div class="control-group">
+		<label class="control-label" for="cover">Обложка</label> <input
+			type="text" ng-model="book.coverMain" id="cover">
+	</div>
 
 	<div class="modal-footer">
 		<button class="btn btn-primary" ng-click="ok(book,author,publisher)">OK</button>

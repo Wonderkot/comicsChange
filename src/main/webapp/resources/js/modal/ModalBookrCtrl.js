@@ -39,6 +39,7 @@ angular.module('app').controller('ModalBookAddCtrl',
 				adder.title = book.title;
 				adder.publisher= publisher;
 				adder.author = author;
+				adder.coverMain = book.coverMain;
 				adder.$save();
 				list.push(adder);
 				$modalInstance.close();

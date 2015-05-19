@@ -4,6 +4,7 @@
 
 	<resultMap type="Books" id="BooksResult" autoMapping="true">
 		<id property="id" column="ID" />
+		<id property="coverMain" column="cover"/>
 		<association property="publisher" column="publisher_id"
 			javaType="Publisher" select="selectPublisher" />
 		<association property="author" column="author_id"
@@ -24,8 +25,8 @@
 		insert into comicschange.comics_book
 		(title,
 		publisher_id,
-		author_id) values
-		(#{book.title},#{book.publisher.id},#{book.author.id})
+		author_id,cover) values
+		(#{book.title},#{book.publisher.id},#{book.author.id},#{book.coverMain})
 	</insert>
 
 	<select id="getAllBooks" resultMap="BooksResult">

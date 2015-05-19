@@ -32,7 +32,7 @@ public class AuthorDaoImpl implements AuthorDao {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
 					Author.class.getSimpleName());
 			return;
-		}
+		}		
 		logger.info(LogMessages.INSERT_NEW_OBJECT.getMesssage(),
 				Author.class.getSimpleName());
 		authorDao.addNewAuthor(author);

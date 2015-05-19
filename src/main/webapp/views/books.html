@@ -1,21 +1,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <table st-table="displayedCollection" st-safe-src="books"
-	class="table table-striped">
+	class="table table-striped" id="booksTable">
 	<thead>
 		<tr>
 			<th st-sort="id">ID</th>
 			<th st-sort="publisher">Издатель</th>
 			<th st-sort="author">Автор</th>
 			<th st-sort="title">Название</th>
+			<th>Обложка</th>
 			<th>Редактировать</th>
 			<th>Удалить</th>
 		</tr>
 		<tr>
-			<th colspan="5"><input st-search="" class="form-control"
+			<th colspan="6"><input st-search="" class="form-control"
 				placeholder="Поиск" type="text" /></th>
 			<th><button class="btn btn-sm btn-success" ng-click="addItem()">
 					Добавить <i class="glyphicon glyphicon-plus-sign"></i>
-				</button></th>
+				</button></th>				
 		</tr>
 	</thead>
 	<tbody>
@@ -25,6 +26,7 @@
 			<td>{{book.author.surname}} {{book.author.name}}
 				{{book.author.patronymic}}</td>
 			<td>{{book.title}}</td>
+			<td><img ng-src="{{book.coverMain}}" width="50" height="70"/></td>
 			<td><a><i ng-click="open(book)"
 					class="glyphicon glyphicon glyphicon-pencil"></i></a></td>
 			<td><button type="button" ng-click="removeItem(book)"

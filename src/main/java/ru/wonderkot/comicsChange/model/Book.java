@@ -12,6 +12,8 @@ public class Book {
 	private String title;
 	private Publisher publisher;
 	private Author author;
+	private String coverMain;
+	private String coverBackup;
 	
 	public Long getId() {
 		return id;
@@ -36,5 +38,17 @@ public class Book {
 	}
 	public void setAuthor(Author author) {
 		this.author = author;
+	}
+	public String getCoverMain() {
+		return coverMain;
+	}
+	public void setCoverMain(String coverMain) {
+		this.coverMain = coverMain;
+	}
+	public String getCoverBackup() {
+		return coverBackup;
+	}
+	public void setCoverBackup(String coverBackup) {
+		this.coverBackup = coverBackup;
 	}
 }
