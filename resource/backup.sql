@@ -12,9 +12,8 @@
 
 -- Дамп структуры базы данных comicschange
 DROP DATABASE IF EXISTS `comicschange`;
-DROP DATABASE IF EXISTS `shop_core`;
-CREATE DATABASE IF NOT EXISTS `shop_core` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `shop_core`;
+CREATE DATABASE IF NOT EXISTS `comicschange` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `comicschange`;
 
 
 -- Дамп структуры для таблица comicschange.authors
@@ -40,6 +39,7 @@ CREATE TABLE IF NOT EXISTS `comics_book` (
   `author_id` int(11) NOT NULL,
   `publisher_id` int(11) NOT NULL,
   `DELETED` int(11) NOT NULL DEFAULT '0',
+  `cover` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `title_UNIQUE` (`title`),

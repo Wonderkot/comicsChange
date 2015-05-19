@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    <changeSet author="wonderkot" id="1432038487540-1">
+        <createTable tableName="authors">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SURNAME" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PATRONYMIC" type="TEXT"/>
+            <column defaultValueNumeric="0" name="DELETED" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TEST" type="TEXT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-2">
+        <createTable tableName="comics_book">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="title" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="publisher_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="0" name="DELETED" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cover" type="VARCHAR(250)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-3" >
+        <createTable tableName="have">
+            <column name="user_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-4" >
+        <createTable tableName="publishers">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="VARCHAR(45)"/>
+            <column defaultValueNumeric="0" name="DELETED" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-5" >
+        <createTable tableName="users">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="LOGIN" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PASSWORD" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SURNAME" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PATRONYMIC" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-6" >
+        <createTable tableName="wish">
+            <column name="user_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="book_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-7" >
+        <addUniqueConstraint columnNames="LOGIN" constraintName="LOGIN_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="users"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-8" >
+        <addUniqueConstraint columnNames="email" constraintName="email_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="users"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-9" >
+        <addUniqueConstraint columnNames="id" constraintName="id_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="comics_book"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-10" >
+        <addUniqueConstraint columnNames="title" constraintName="title_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="comics_book"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-11" >
+        <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="comics_book" constraintName="FK_author" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="authors"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-12" >
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="have" constraintName="FK_book" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="id" referencedTableName="comics_book"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-13" >
+        <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="wish" constraintName="FK_book_wish" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="id" referencedTableName="comics_book"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-14" >
+        <addForeignKeyConstraint baseColumnNames="publisher_id" baseTableName="comics_book" constraintName="FK_publisher" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="publishers"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-15" >
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="have" constraintName="FK_user" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-16" >
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="wish" constraintName="FK_user_wish" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="users"/>
+    </changeSet>
+    <changeSet author="wonderkot" id="1432038487540-17" >
+		<createTable tableName="test">
+            <column autoIncrement="true" name="ID" type="INT">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="NAME" type="TEXT">
+                <constraints nullable="false"/>
+            </column>            
+        </createTable>        
+    </changeSet>
+</databaseChangeLog>
