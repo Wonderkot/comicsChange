@@ -4,7 +4,7 @@
 
 	<resultMap type="Books" id="BooksResult" autoMapping="true">
 		<id property="id" column="ID" />
-		<id property="coverMain" column="cover"/>
+		<id property="coverMain" column="cover" />
 		<association property="publisher" column="publisher_id"
 			javaType="Publisher" select="selectPublisher" />
 		<association property="author" column="author_id"
