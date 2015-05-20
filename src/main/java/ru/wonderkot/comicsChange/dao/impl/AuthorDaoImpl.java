@@ -26,7 +26,6 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Autowired
 	private AuthorDao authorDao;
 
-	@Override
 	public void addNewAuthor(Author author) {
 		if (author == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -38,7 +37,6 @@ public class AuthorDaoImpl implements AuthorDao {
 		authorDao.addNewAuthor(author);
 	}
 
-	@Override
 	public void deleteAuthor(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -51,7 +49,6 @@ public class AuthorDaoImpl implements AuthorDao {
 
 	}
 
-	@Override
 	public ArrayList<Author> findAuthor(Author author) {
 		if (author == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -63,7 +60,6 @@ public class AuthorDaoImpl implements AuthorDao {
 		return authorDao.findAuthor(author);
 	}
 
-	@Override
 	public ArrayList<Author> getAllAuthors() {
 		ArrayList<Author> authors = new ArrayList<Author>();
 		authors = authorDao.getAllAuthors();
@@ -72,7 +68,6 @@ public class AuthorDaoImpl implements AuthorDao {
 		return authors;
 	}
 
-	@Override
 	public void updateAuthor(Author author) {
 		if (author == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -84,7 +79,6 @@ public class AuthorDaoImpl implements AuthorDao {
 				Author.class.getSimpleName(), author.getId());
 	}
 
-	@Override
 	public Author getAuthor(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
@@ -95,7 +89,6 @@ public class AuthorDaoImpl implements AuthorDao {
 		return authorDao.getAuthor(id);
 	}
 
-	@Override
 	public ArrayList<Book> getAuthorBooks(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);

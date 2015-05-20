@@ -72,6 +72,18 @@
 			<artifactId>log4j-core</artifactId>
 			<version>2.2</version>
 		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.35</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.liquibase</groupId>
+			<artifactId>liquibase-core</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+
 	</dependencies>
 
 	<repositories>
@@ -84,17 +96,20 @@
 
 	<build>
 		<finalName>shopCore</finalName>
-		<defaultGoal>liquibase:update</defaultGoal>
+		<defaultGoal>clean install</defaultGoal>
 		<resources>
 			<resource>
 				<directory>resource</directory>
+			</resource>
+			<resource>
+				<directory>src\main\res</directory>
 			</resource>
 		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
+				<version>3.3</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -105,7 +120,7 @@
 				<artifactId>liquibase-maven-plugin</artifactId>
 				<version>${liquibase.version}</version>
 				<configuration>
-					<changeLogFile>${basedir}/resource/db.changelog.xml</changeLogFile>
+					<changeLogFile>${basedir}\src\main\res\db.changelog.xml</changeLogFile>
 					<skip>false</skip>
 					<verbose>true</verbose>
 					<dropFirst>false</dropFirst>
@@ -113,14 +128,7 @@
 					<url>jdbc:mysql://localhost:3306/comicschange</url>
 					<username>root</username>
 					<password>root</password>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>${mysql.connector.version}</version>
-					</dependency>
-				</dependencies>
+				</configuration>				
 			</plugin>
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>

@@ -25,8 +25,7 @@ public class PublisherDaoImpl implements PublisherDao {
 	private static Logger logger = LogManager.getLogger(PublisherDaoImpl.class);
 	@Autowired
 	private PublisherDao publisherDao;
-
-	@Override
+	
 	public void addNewPublisher(Publisher publisher) {
 		if (publisher == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -37,8 +36,7 @@ public class PublisherDaoImpl implements PublisherDao {
 		logger.info(LogMessages.INSERT_NEW_OBJECT.getMesssage(),
 				Publisher.class.getSimpleName());
 	}
-
-	@Override
+	
 	public void deletePublisher(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
@@ -48,8 +46,7 @@ public class PublisherDaoImpl implements PublisherDao {
 		logger.warn(LogMessages.DELETE_OBJECT.getMesssage(),
 				Publisher.class.getSimpleName(), id);
 	}
-
-	@Override
+	
 	public ArrayList<Publisher> findPublisher(Publisher publisher) {
 		if (publisher == null) {
 			logger.error(LogMessages.FIND.getMesssage(),
@@ -67,8 +64,7 @@ public class PublisherDaoImpl implements PublisherDao {
 		}
 		return publishers;
 	}
-
-	@Override
+	
 	public ArrayList<Publisher> getAllPublishers() {
 		ArrayList<Publisher> publishers = new ArrayList<>();		
 		publishers = publisherDao.getAllPublishers();		
@@ -76,8 +72,7 @@ public class PublisherDaoImpl implements PublisherDao {
 				Publisher.class.getSimpleName(), publishers.size());
 		return publishers;
 	}
-
-	@Override
+	
 	public void updatePublisher(Publisher publisher) {
 		if (publisher == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -88,15 +83,13 @@ public class PublisherDaoImpl implements PublisherDao {
 		logger.info(LogMessages.UPDATE_OBJECT.getMesssage(),
 				Publisher.class.getSimpleName(), publisher.getId());
 	}
-
-	@Override
+	
 	public ArrayList<Book> getAllPublisherBooks(Integer id) {
 		// TODO Auto-generated method stub
 		logger.warn("not realized");
 		return null;
 	}
-
-	@Override
+	
 	public Publisher getPublisher(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);

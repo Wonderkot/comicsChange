@@ -25,7 +25,6 @@ public class BookDaoImpl implements BookDao {
 	@Autowired
 	private BookDao bookDao;
 
-	@Override
 	public void addNewBook(Book book) {
 		if (book == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -37,7 +36,6 @@ public class BookDaoImpl implements BookDao {
 				Book.class.getSimpleName());
 	}
 
-	@Override
 	public void deleteBook(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -49,7 +47,6 @@ public class BookDaoImpl implements BookDao {
 				Book.class.getSimpleName(), id);
 	}
 
-	@Override
 	public ArrayList<Book> findBooks(Book book) {
 		if (book == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -67,8 +64,7 @@ public class BookDaoImpl implements BookDao {
 		}
 		return books;
 	}
-
-	@Override
+	
 	public void updateBook(Book book) {
 		if (book == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -79,8 +75,7 @@ public class BookDaoImpl implements BookDao {
 		logger.info(LogMessages.UPDATE_OBJECT.getMesssage(),
 				Book.class.getSimpleName(), book.getId());
 	}
-
-	@Override
+	
 	public ArrayList<Book> getAllBooks() {
 		ArrayList<Book> books = new ArrayList<>();
 		books = bookDao.getAllBooks();
@@ -91,8 +86,7 @@ public class BookDaoImpl implements BookDao {
 		}
 		return books;
 	}
-
-	@Override
+	
 	public Book getBook(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);

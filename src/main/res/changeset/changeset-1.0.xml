@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
-    <changeSet author="wonderkot" id="1432038487540-1">
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+        <changeSet author="wonderkot" id="1432038487540-1" runOnChange="true">
         <createTable tableName="authors">
             <column autoIncrement="true" name="ID" type="INT">
                 <constraints primaryKey="true"/>
@@ -18,7 +23,7 @@
             <column name="TEST" type="TEXT"/>
         </createTable>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-2">
+    <changeSet author="wonderkot" id="1432038487540-2" runOnChange="true">
         <createTable tableName="comics_book">
             <column autoIncrement="true" name="id" type="INT">
                 <constraints primaryKey="true"/>
@@ -38,7 +43,7 @@
             <column name="cover" type="VARCHAR(250)"/>
         </createTable>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-3" >
+    <changeSet author="wonderkot" id="1432038487540-3" runOnChange="true">
         <createTable tableName="have">
             <column name="user_id" type="INT">
                 <constraints nullable="false"/>
@@ -48,7 +53,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-4" >
+    <changeSet author="wonderkot" id="1432038487540-4" runOnChange="true">
         <createTable tableName="publishers">
             <column autoIncrement="true" name="ID" type="INT">
                 <constraints primaryKey="true"/>
@@ -59,7 +64,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-5" >
+    <changeSet author="wonderkot" id="1432038487540-5" runOnChange="true">
         <createTable tableName="users">
             <column autoIncrement="true" name="ID" type="INT">
                 <constraints primaryKey="true"/>
@@ -84,7 +89,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-6" >
+    <changeSet author="wonderkot" id="1432038487540-6" runOnChange="true">
         <createTable tableName="wish">
             <column name="user_id" type="INT">
                 <constraints nullable="false"/>
@@ -94,44 +99,34 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-7" >
+    <changeSet author="wonderkot" id="1432038487540-7" runOnChange="true">
         <addUniqueConstraint columnNames="LOGIN" constraintName="LOGIN_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="users"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-8" >
+    <changeSet author="wonderkot" id="1432038487540-8" runOnChange="true">
         <addUniqueConstraint columnNames="email" constraintName="email_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="users"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-9" >
+    <changeSet author="wonderkot" id="1432038487540-9" runOnChange="true">
         <addUniqueConstraint columnNames="id" constraintName="id_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="comics_book"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-10" >
+    <changeSet author="wonderkot" id="1432038487540-10" runOnChange="true">
         <addUniqueConstraint columnNames="title" constraintName="title_UNIQUE" deferrable="false" disabled="false" initiallyDeferred="false" tableName="comics_book"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-11" >
+    <changeSet author="wonderkot" id="1432038487540-11" runOnChange="true">
         <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="comics_book" constraintName="FK_author" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="authors"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-12" >
+    <changeSet author="wonderkot" id="1432038487540-12" runOnChange="true">
         <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="have" constraintName="FK_book" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="id" referencedTableName="comics_book"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-13" >
+    <changeSet author="wonderkot" id="1432038487540-13" runOnChange="true">
         <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="wish" constraintName="FK_book_wish" deferrable="false" initiallyDeferred="false" onDelete="CASCADE" onUpdate="CASCADE" referencedColumnNames="id" referencedTableName="comics_book"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-14" >
+    <changeSet author="wonderkot" id="1432038487540-14" runOnChange="true">
         <addForeignKeyConstraint baseColumnNames="publisher_id" baseTableName="comics_book" constraintName="FK_publisher" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="publishers"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-15" >
+    <changeSet author="wonderkot" id="1432038487540-15" runOnChange="true">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="have" constraintName="FK_user" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="users"/>
     </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-16" >
+    <changeSet author="wonderkot" id="1432038487540-16" runOnChange="true">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="wish" constraintName="FK_user_wish" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="ID" referencedTableName="users"/>
-    </changeSet>
-    <changeSet author="wonderkot" id="1432038487540-17" >
-		<createTable tableName="test">
-            <column autoIncrement="true" name="ID" type="INT">
-                <constraints primaryKey="true"/>
-            </column>
-            <column name="NAME" type="TEXT">
-                <constraints nullable="false"/>
-            </column>            
-        </createTable>        
     </changeSet>
 </databaseChangeLog>

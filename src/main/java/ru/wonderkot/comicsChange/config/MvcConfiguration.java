@@ -3,9 +3,10 @@ package ru.wonderkot.comicsChange.config;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import liquibase.integration.spring.SpringLiquibase;
+
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -25,7 +26,6 @@ import ru.wonderkot.comicsChange.dao.PublisherDao;
 
 @Configuration
 @ComponentScan(basePackages = "ru.wonderkot.comicsChange")
-@MapperScan(basePackages = "ru.wonderkot.comicsChange.dao")
 @EnableWebMvc
 public class MvcConfiguration extends WebMvcConfigurerAdapter {
 
@@ -105,6 +105,14 @@ public class MvcConfiguration extends WebMvcConfigurerAdapter {
 		bean.setMapperInterface(BookDao.class);
 		bean.setSqlSessionFactory(sqlSessionFactory());		
 		return bean;
+	}
+	
+	@Bean
+	SpringLiquibase springLiquibase() throws NamingException {
+		SpringLiquibase liquibase = new SpringLiquibase();
+		liquibase.setDataSource(dataSource());
+		liquibase.setChangeLog("classpath:db.changelog.xml");		
+		return liquibase;		
 	}
 
 }
