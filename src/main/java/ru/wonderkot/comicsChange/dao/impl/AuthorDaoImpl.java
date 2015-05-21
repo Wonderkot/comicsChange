@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ru.wonderkot.comicsChange.dao.AuthorDao;
 import ru.wonderkot.comicsChange.model.Author;
@@ -26,17 +27,19 @@ public class AuthorDaoImpl implements AuthorDao {
 	@Autowired
 	private AuthorDao authorDao;
 
+	@Transactional
 	public void addNewAuthor(Author author) {
 		if (author == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
 					Author.class.getSimpleName());
 			return;
-		}		
+		}
 		logger.info(LogMessages.INSERT_NEW_OBJECT.getMesssage(),
 				Author.class.getSimpleName());
 		authorDao.addNewAuthor(author);
 	}
 
+	@Transactional
 	public void deleteAuthor(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -49,6 +52,7 @@ public class AuthorDaoImpl implements AuthorDao {
 
 	}
 
+	@Transactional
 	public ArrayList<Author> findAuthor(Author author) {
 		if (author == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -60,6 +64,7 @@ public class AuthorDaoImpl implements AuthorDao {
 		return authorDao.findAuthor(author);
 	}
 
+	@Transactional
 	public ArrayList<Author> getAllAuthors() {
 		ArrayList<Author> authors = new ArrayList<Author>();
 		authors = authorDao.getAllAuthors();
@@ -68,6 +73,7 @@ public class AuthorDaoImpl implements AuthorDao {
 		return authors;
 	}
 
+	@Transactional
 	public void updateAuthor(Author author) {
 		if (author == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -79,6 +85,7 @@ public class AuthorDaoImpl implements AuthorDao {
 				Author.class.getSimpleName(), author.getId());
 	}
 
+	@Transactional
 	public Author getAuthor(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
@@ -89,6 +96,7 @@ public class AuthorDaoImpl implements AuthorDao {
 		return authorDao.getAuthor(id);
 	}
 
+	@Transactional
 	public ArrayList<Book> getAuthorBooks(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);

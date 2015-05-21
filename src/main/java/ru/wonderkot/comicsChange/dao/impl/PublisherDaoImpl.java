@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ru.wonderkot.comicsChange.dao.PublisherDao;
 import ru.wonderkot.comicsChange.model.Book;
@@ -26,6 +27,7 @@ public class PublisherDaoImpl implements PublisherDao {
 	@Autowired
 	private PublisherDao publisherDao;
 	
+	@Transactional
 	public void addNewPublisher(Publisher publisher) {
 		if (publisher == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -37,6 +39,7 @@ public class PublisherDaoImpl implements PublisherDao {
 				Publisher.class.getSimpleName());
 	}
 	
+	@Transactional
 	public void deletePublisher(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
@@ -47,6 +50,7 @@ public class PublisherDaoImpl implements PublisherDao {
 				Publisher.class.getSimpleName(), id);
 	}
 	
+	@Transactional
 	public ArrayList<Publisher> findPublisher(Publisher publisher) {
 		if (publisher == null) {
 			logger.error(LogMessages.FIND.getMesssage(),
@@ -65,6 +69,7 @@ public class PublisherDaoImpl implements PublisherDao {
 		return publishers;
 	}
 	
+	@Transactional
 	public ArrayList<Publisher> getAllPublishers() {
 		ArrayList<Publisher> publishers = new ArrayList<>();		
 		publishers = publisherDao.getAllPublishers();		
@@ -73,6 +78,7 @@ public class PublisherDaoImpl implements PublisherDao {
 		return publishers;
 	}
 	
+	@Transactional
 	public void updatePublisher(Publisher publisher) {
 		if (publisher == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -84,12 +90,14 @@ public class PublisherDaoImpl implements PublisherDao {
 				Publisher.class.getSimpleName(), publisher.getId());
 	}
 	
+	@Transactional
 	public ArrayList<Book> getAllPublisherBooks(Integer id) {
 		// TODO Auto-generated method stub
 		logger.warn("not realized");
 		return null;
 	}
 	
+	@Transactional
 	public Publisher getPublisher(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);

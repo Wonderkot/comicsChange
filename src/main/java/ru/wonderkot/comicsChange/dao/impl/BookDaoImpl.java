@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ru.wonderkot.comicsChange.dao.BookDao;
 import ru.wonderkot.comicsChange.model.Book;
@@ -24,7 +25,8 @@ public class BookDaoImpl implements BookDao {
 	private static Logger logger = LogManager.getLogger(BookDaoImpl.class);
 	@Autowired
 	private BookDao bookDao;
-
+	
+	@Transactional
 	public void addNewBook(Book book) {
 		if (book == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -36,6 +38,7 @@ public class BookDaoImpl implements BookDao {
 				Book.class.getSimpleName());
 	}
 
+	@Transactional
 	public void deleteBook(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -47,6 +50,7 @@ public class BookDaoImpl implements BookDao {
 				Book.class.getSimpleName(), id);
 	}
 
+	@Transactional
 	public ArrayList<Book> findBooks(Book book) {
 		if (book == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -65,6 +69,7 @@ public class BookDaoImpl implements BookDao {
 		return books;
 	}
 	
+	@Transactional
 	public void updateBook(Book book) {
 		if (book == null) {
 			logger.error(LogMessages.MODEL_IS_NULL.getMesssage(),
@@ -76,6 +81,7 @@ public class BookDaoImpl implements BookDao {
 				Book.class.getSimpleName(), book.getId());
 	}
 	
+	@Transactional
 	public ArrayList<Book> getAllBooks() {
 		ArrayList<Book> books = new ArrayList<>();
 		books = bookDao.getAllBooks();
@@ -87,6 +93,7 @@ public class BookDaoImpl implements BookDao {
 		return books;
 	}
 	
+	@Transactional
 	public Book getBook(Integer id) {
 		if (id <= 0) {
 			logger.error(LogMessages.NOT_VALID_ID.getMesssage(), id);
